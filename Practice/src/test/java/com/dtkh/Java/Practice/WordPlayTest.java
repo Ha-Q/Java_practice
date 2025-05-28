@@ -26,4 +26,12 @@ public class WordPlayTest {
 		assertEquals(str1, "H4ll0W0rld");
 	}
 	
+	@Test
+	public void emphasizeTest() {
+		String str = word.emphasize("dna ctgaaactga", 'a');
+		String str1 = word.emphasize("Mary Bella Abracadabra", 'a');
+		assertEquals(str, "dn* ctg+*+ctg+");
+		assertEquals(str1, "M+ry Bell+ +br*c*d*br+");
+	}
+	
 }

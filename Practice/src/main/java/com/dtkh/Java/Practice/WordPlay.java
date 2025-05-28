@@ -25,6 +25,20 @@ public class WordPlay {
 	}
 	
 	public String emphasize(String phrase, char ch) {
-		
+		StringBuilder sb = new StringBuilder(phrase);
+		char charIndex = '0';
+		char newCh = Character.toLowerCase(ch);
+		for(int i = 0; i < phrase.length(); i++) {
+			charIndex = Character.toLowerCase(sb.charAt(i));
+			if(charIndex == newCh) {
+				if((i % 2) == 0) {
+					sb.replace(i, i + 1, "*");
+				}
+				else {
+					sb.replace(i, i + 1, "+");
+				}
+			}
+		}
+		return sb.toString();
 	}
 }
