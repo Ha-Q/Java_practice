@@ -14,16 +14,16 @@ public class WordLengthsTest {
 
 	@Test
 	public void getWordLengthTest() {
-		int result = wl.getWordLength("\"hello\"");
-		int result1 = wl.getWordLength("hello");
-		int result2 = wl.getWordLength("hello.,,");
-		int result3 = wl.getWordLength("\"hello.,,,\"");
-		int result4 = wl.getWordLength("!,hello");
-		assertEquals(result, 5);
-		assertEquals(result1, 5);
-		assertEquals(result2, 5);
-		assertEquals(result3, 9);
-		assertEquals(5, result4);
+		String result = wl.getWord("\"hello\"");
+		String result1 = wl.getWord("hello");
+		String result2 = wl.getWord("hello.,,");
+		String result3 = wl.getWord("\"hello.,,,\"");
+		String result4 = wl.getWord("!,hello");
+		assertEquals("hello", result);
+		assertEquals("hello", result1);
+		assertEquals("hello", result2);
+		assertEquals("hello.,,,", result3);
+		assertEquals("hello", result4);
 	}
 	@SuppressWarnings("null")
 	@Test

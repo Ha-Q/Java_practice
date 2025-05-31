@@ -8,29 +8,30 @@ public class WordLengths {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getWordLength(String word) {
-		int l = word.length();
-		int mid = l/2;
+	public String getWord(String word) {
 		int s = 0;
-		int e = l - 1;
-		int count = 0;
+		int e = word.length() - 1;
 		char startLetter = word.charAt(s);
 		char endLetter = word.charAt(e);		
 		if (startLetter == '"' && endLetter == '"') {
-			return l - 2;
+			return word.substring(1, e);
 		}
 		else {
-			while(!Character.isLetter(startLetter) && s < mid) {
+			StringBuilder sb = new StringBuilder(word);
+			int l = sb.length();
+			while(!Character.isLetter(startLetter) && l > 0) {
 				s++;
-				count--;
+				sb.deleteCharAt(0);
+				l = sb.length();
 				startLetter = word.charAt(s);
 			}
-			while(!Character.isLetter(endLetter) && e > mid) {
+			while(!Character.isLetter(endLetter) && l > 0) {
 				e--;
-				count--;
+				sb.deleteCharAt(l-1);
+				l = sb.length();
 				endLetter = word.charAt(e);
 			}
-			return l + count;
+			return sb.toString();
 		}
 	}
 	
@@ -54,17 +55,19 @@ public class WordLengths {
 	}
 	public void countWordLengths(FileResource resource, int[] counts) {
 		int wordLength;
+		String realWord;
 		int l = counts.length;
 		StringBuilder[] arraySB = new StringBuilder[l];
 		for(String word: resource.words()) {
-			wordLength = getWordLength(word);
+			realWord = getWord(word);
+			wordLength = realWord.length();
 			if(wordLength < l) {
 				counts[wordLength] += 1;
-				appendWord(word, arraySB, wordLength);
+				appendWord(realWord, arraySB, wordLength);
 			}
 			else {
 				counts[l-1] += 1;
-				appendWord(word, arraySB, l-1);
+				appendWord(realWord, arraySB, l-1);
 			}			
 		}
 		printWordLength(arraySB, counts);
