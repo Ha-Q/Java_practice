@@ -38,4 +38,10 @@ public class WordLengthsTest {
 		int[] counts = new int[31];
 		wl.countWordLengths(file, counts);			
 	}
+	@Test
+	public void indexOfMaxTest() {
+		int[] arr = {1, 2, 3};
+		int result = wl.indexOfMax(arr);
+		assertEquals(3, result);
+	}
 }

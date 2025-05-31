@@ -70,6 +70,15 @@ public class WordLengths {
 				appendWord(realWord, arraySB, l-1);
 			}			
 		}
+		System.out.println("the most common word length in the file: " + indexOfMax(counts));
 		printWordLength(arraySB, counts);
 	}
+	public int indexOfMax(int[] values) {
+		int max = values[0];
+		for(int i = 1; i < values.length; i++) {
+			max = max > values[i] ? max : values[i];
+		}
+		return max;
+	}
+	
 }
