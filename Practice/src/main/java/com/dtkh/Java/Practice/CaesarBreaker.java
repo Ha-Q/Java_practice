@@ -34,4 +34,26 @@ public class CaesarBreaker {
 			countLettersFromWord(word);
 		}
 	}
+	public int maxIndex() {
+		int maxIndex = 0;
+		int maxValue = counts[0];
+		int indexValue = 0;
+		for(int i = 1; i < counts.length; i++) {
+			indexValue = counts[i];
+			if(maxValue <= indexValue) {
+				maxValue = indexValue;
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	public String halfOfString(String message, int start) {
+		StringBuilder sb = new StringBuilder();
+		char indexCh = '0';
+		for(int i = start; i < message.length(); i +=2) {
+			indexCh = message.charAt(i);
+			sb.append(indexCh);
+		}
+		return sb.toString();
+	}
 }
