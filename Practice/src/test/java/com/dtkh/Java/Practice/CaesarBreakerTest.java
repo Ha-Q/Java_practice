@@ -44,7 +44,7 @@ public class CaesarBreakerTest {
 	public void maxIndexTest() {
 		FileResource file = new FileResource("smallhamlet.txt");
 		cipherBreaker.countLetters(file);
-		int result = cipherBreaker.maxIndex();
+		int result = cipherBreaker.maxIndex(cipherBreaker.getCounts());
 		assertEquals(5, result);
 	}
 	@Test
@@ -56,4 +56,25 @@ public class CaesarBreakerTest {
 //		assertEquals("BDF", result1);
 		assertEquals("CE", result2);
 	}
+	@Test
+	public void decryptTest() {
+		String result = cipherBreaker.decrypt("a", 23);
+		assertEquals("d", result);
+	}
+	@Test
+	public void resetCountsTest() {
+		int[] expected = new int[26];
+		cipherBreaker.countLetters(new FileResource("smallhamlet.txt"));
+		cipherBreaker.resetCounts();
+		int[] result = cipherBreaker.getCounts();
+		assertArrayEquals(expected, result);
+	}
+	
+	@Test
+	public void getKeyTest() {
+		int result = cipherBreaker.getKey(new FileResource("encrypted.txt"));
+		assertEquals(15, result);
+	}
+	
+	
 }

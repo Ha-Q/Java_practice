@@ -1,6 +1,9 @@
 package com.dtkh.Java.Practice;
-
+import edu.duke.*;
 import static org.junit.Assert.assertEquals;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -32,5 +35,17 @@ public class CaesarCipherTest {
 		String result = cipher.encryptTwoKeys("First Legion", 23, 17);
 		assertEquals(result, "Czojq Ivdzle");
 	}
-
+	@Test
+	public void encryptFromAndToFileTest() {
+		try {
+			FileWriter fileWriter = new FileWriter("src/test/java/encrypted.txt");
+			cipher.encryptFromAndToFile(new FileResource("smallhamlet.txt"), fileWriter, 15);
+			FileResource reader = new FileResource("src/test/java/encrypted.txt");
+			String result = reader.asString().trim();
+			assertEquals("Yjhipithihigxcvlxiwadihduttttttttttttttttth", result);
+		}
+		catch (Exception exp) {
+			System.out.println(exp);
+		}
+	}
 }

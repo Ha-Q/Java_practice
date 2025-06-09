@@ -1,5 +1,10 @@
 package com.dtkh.Java.Practice;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
+import edu.duke.FileResource;
+
 public class CaesarCipher {
 
 	public CaesarCipher() {
@@ -32,6 +37,35 @@ public class CaesarCipher {
 			}
 		}
 		return sb.toString();
+	}
+	public StringBuilder encryptSB(String input, int key) {
+		int KEY = key % 26;
+		String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+		char indexCh = '0';
+		int cipherIndex = 0;
+		char cipherCh = '0';
+		int l = input.length();
+		StringBuilder cipherAlphabet = new StringBuilder(ALPHABET);
+		CharSequence startSubCharSequence = cipherAlphabet.subSequence(KEY, ALPHABET.length());
+		cipherAlphabet.insert(0,startSubCharSequence);
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < l; i++) {
+			indexCh = input.charAt(i);
+			if(indexCh > 64 && indexCh < 91 ) {
+				cipherIndex = ALPHABET.indexOf(Character.toLowerCase(indexCh));
+				cipherCh = Character.toUpperCase(cipherAlphabet.charAt(cipherIndex));
+				sb.append(cipherCh);
+			}
+			else if(indexCh > 96 && indexCh < 123 ) {
+				cipherIndex = ALPHABET.indexOf(indexCh);
+				cipherCh = cipherAlphabet.charAt(cipherIndex);
+				sb.append(cipherCh);
+			}
+			else {
+				sb.append(indexCh);
+			}
+		}
+		return sb;
 	}
 
 	public char encryptChar(char ch, int key) {
@@ -71,6 +105,16 @@ public class CaesarCipher {
 			sb.append(charCipher);
 		}
 		return sb.toString();
+	}
+	
+	public void encryptFromAndToFile(FileResource readFile, FileWriter writeFile, int key) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		for(String word: readFile.words()) {
+			sb.append(encryptSB(word, key));
+		}
+		String message = sb.toString();
+		writeFile.write(message);
+		writeFile.close();
 	}
 		
 }
