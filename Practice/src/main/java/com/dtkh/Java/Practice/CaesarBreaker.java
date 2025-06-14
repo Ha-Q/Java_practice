@@ -70,8 +70,7 @@ public class CaesarBreaker {
 		return maxIndex;
 	}
 	
-	public int getKey(FileResource file) {
-		String message = file.asString();
+	public int getKey(String message) {
 		int maxIndex = 0;
 		int key = 0;
 		for(int i = 0; i < 26; i++) {
@@ -95,4 +94,14 @@ public class CaesarBreaker {
 		}
 		return sb.toString();
 	}
+	
+	public String decryptTwoKeys(FileResource encryptedFile) {
+		String message = encryptedFile.asString();
+		String encrypted1stHalf = halfOfString(message,0);
+		String encrypted2ndHalf = halfOfString(message,1);
+		int firstKey = getKey(encrypted1stHalf);
+		int secondKey= getKey(encrypted2ndHalf);
+		return cipher.encryptTwoKeys(message, 26 - firstKey, 26 -secondKey);	
+	}
+	
 }

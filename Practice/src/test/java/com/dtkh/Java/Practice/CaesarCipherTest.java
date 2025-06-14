@@ -48,4 +48,16 @@ public class CaesarCipherTest {
 			System.out.println(exp);
 		}
 	}
+	@Test
+	public void encryptTwoKeysFromAndToFileTest() {
+		try {
+			FileResource read = new FileResource("smallhamlet.txt");
+			FileWriter write = new FileWriter("src/test/java/encrypted2keys.txt");
+			cipher.encryptTwoKeysFromAndToFile(read, write, 3, 4);	
+		}
+
+		catch (Exception exp) {
+			System.out.print(exp);
+		}
+	}
 }

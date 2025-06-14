@@ -116,6 +116,13 @@ public class CaesarCipher {
 		writeFile.write(message);
 		writeFile.close();
 	}
+	
+	public void encryptTwoKeysFromAndToFile(FileResource readFile, FileWriter writeFile, int key1, int key2) throws IOException {
+		String message = readFile.asString();
+		String encryptedMessage = encryptTwoKeys(message, key1, key2);
+		writeFile.write(encryptedMessage);
+		writeFile.close();
+	}
 		
 }
 

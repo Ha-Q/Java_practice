@@ -72,9 +72,15 @@ public class CaesarBreakerTest {
 	
 	@Test
 	public void getKeyTest() {
-		int result = cipherBreaker.getKey(new FileResource("encrypted.txt"));
+		String messageString = new FileResource("encrypted.txt").asString();	
+		int result = cipherBreaker.getKey(messageString);
 		assertEquals(15, result);
 	}
 	
-	
+	@Test
+	public void decryptTwoKeysTest() {
+		FileResource fileResource = new FileResource("encrypted2keys.txt");
+		String resultString = cipherBreaker.decryptTwoKeys(fileResource).trim();
+		assertEquals("Just a test string with lots of eeeeeeeeeeeeeeeees", resultString);
+	}
 }
