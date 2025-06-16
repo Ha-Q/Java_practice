@@ -23,5 +23,17 @@ public class WordFrequenciesTest {
 	public void findUniqueTest() {
 		wordFrequencies.findUnique(new FileResource("smallhamlet.txt"));
 	}
+	@Test
+	public void getMaxTest() {
+		wordFrequencies.findUnique(new FileResource("smallhamlet.txt"));
+		int result = wordFrequencies.getMax();
+		assertEquals(2, result);
+	}
+	@Test
+	public void findIndexOfMaxTest() {
+		wordFrequencies.findUnique(new FileResource("smallhamlet.txt"));
+		int result = wordFrequencies.findIndexOfMax();
+		assertEquals(0, result);
+	}
 	
 }

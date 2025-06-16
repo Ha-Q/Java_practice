@@ -44,5 +44,22 @@ public class WordFrequencies {
 		}
 		return stringBuilder.toString();
 	}
+	
+	public int getMax() {
+		int max = 0;
+		for(int indexValue: myFrequencies) {
+			if(indexValue > max) {
+				max = indexValue;
+			}
+		}
+		return max;
+	}
+	
+	public int findIndexOfMax() {
+		int value = getMax();
+		int index = myFrequencies.indexOf(value);
+		System.out.printf("The word that occurs most often and its count are: %s\n", myWords.get(index));
+		return index;
+	}
 
 }
