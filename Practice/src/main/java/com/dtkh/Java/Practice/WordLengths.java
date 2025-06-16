@@ -23,8 +23,7 @@ public class WordLengths {
 				s++;
 				sb.deleteCharAt(0);
 				l = sb.length();
-				startLetter = word.charAt(s);
-			}
+                       			}
 			while(!Character.isLetter(endLetter) && l > 0) {
 				e--;
 				sb.deleteCharAt(l-1);

@@ -34,7 +34,7 @@ public class WordLengthsTest {
 	}
 	@Test
 	public void countWordLengthsTest() {
-		FileResource file = new FileResource("smallhamlet.txt");
+		FileResource file = new FileResource("romeo.txt");
 		int[] counts = new int[31];
 		wl.countWordLengths(file, counts);			
 	}

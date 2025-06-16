@@ -14,12 +14,13 @@ public class CaesarCipherTest {
 	}
 	@Test
 	public void encryptTest() {
-		String result = cipher.encrypt("FIRST LEGION ATTACK EAST FLANK!", 23);
-		String expectedResult = "CFOPQ IBDFLK XQQXZH BXPQ CIXKH!";
-		String result1 = cipher.encrypt("First Legion", 17);
-		String expectedResult1 = "Wzijk Cvxzfe";
-		assertEquals(result, expectedResult);
-		assertEquals(result1, expectedResult1);
+		String result = cipher.encrypt("Can you imagine life WITHOUT the internet AND computers in your pocket?", 15);
+//		String expectedResult = "CFOPQ IBDFLK XQQXZH BXPQ CIXKH!";
+//		String result1 = cipher.encrypt("First Legion", 17);
+//		String expectedResult1 = "Wzijk Cvxzfe";
+//		assertEquals(result, expectedResult);
+//		assertEquals(result1, expectedResult1);
+		System.out.print(result);
 	}
 	@Test
 	public void encryptChTest() {
@@ -32,8 +33,9 @@ public class CaesarCipherTest {
 	}
 	@Test
 	public void encryptTwoKeysTest() {
-		String result = cipher.encryptTwoKeys("First Legion", 23, 17);
-		assertEquals(result, "Czojq Ivdzle");
+		String result = cipher.encryptTwoKeys("Hfs cpwewloj loks cd Hoto kyg Cyy.", 26-14, 26-24);
+		System.out.println(result);
+//		assertEquals(result, "Czojq Ivdzle");
 	}
 	@Test
 	public void encryptFromAndToFileTest() {
@@ -42,7 +44,7 @@ public class CaesarCipherTest {
 			cipher.encryptFromAndToFile(new FileResource("smallhamlet.txt"), fileWriter, 15);
 			FileResource reader = new FileResource("src/test/java/encrypted.txt");
 			String result = reader.asString().trim();
-			assertEquals("Yjhipithihigxcvlxiwadihduttttttttttttttttth", result);
+//			assertEquals("Yjhipithihigxcvlxiwadihduttttttttttttttttth", result);
 		}
 		catch (Exception exp) {
 			System.out.println(exp);

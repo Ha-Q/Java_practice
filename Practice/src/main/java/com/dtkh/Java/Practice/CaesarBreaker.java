@@ -90,7 +90,7 @@ public class CaesarBreaker {
 		char indexCh = '0';
 		for(int i = start; i < message.length(); i +=2) {
 			indexCh = message.charAt(i);
-			sb.append(indexCh);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   			sb.append(indexCh);
 		}
 		return sb.toString();
 	}
@@ -101,6 +101,7 @@ public class CaesarBreaker {
 		String encrypted2ndHalf = halfOfString(message,1);
 		int firstKey = getKey(encrypted1stHalf);
 		int secondKey= getKey(encrypted2ndHalf);
+		System.out.printf("%d %d\n", firstKey, secondKey);
 		return cipher.encryptTwoKeys(message, 26 - firstKey, 26 -secondKey);	
 	}
 	
