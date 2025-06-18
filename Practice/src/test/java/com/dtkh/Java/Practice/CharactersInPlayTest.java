@@ -33,13 +33,13 @@ public class CharactersInPlayTest {
 	
 	@Test
 	public void findAllCharactersTest() {
-		playTest.findAllCharacters(new FileResource("macbethSmall.txt"));
+		playTest.findAllCharacters(new FileResource("likeit.txt"));
 	}
 	
 	@Test
 	public void charactersWithNumPartsTest() {
-		playTest.findAllCharacters(new FileResource("macbethSmall.txt"));
-		playTest.charactersWithNumParts(1, 5);
+		playTest.findAllCharacters(new FileResource("likeit.txt"));
+		playTest.charactersWithNumParts(10, 15);
 	}
 
 }

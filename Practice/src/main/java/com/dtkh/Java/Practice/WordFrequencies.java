@@ -32,6 +32,7 @@ public class WordFrequencies {
 		 }
 		 System.out.println(myWords);
 		 System.out.println(myFrequencies);
+		 System.out.println(myWords.size());
 	}
 	public String getWord(String word) {
 		StringBuilder stringBuilder = new StringBuilder();
@@ -58,8 +59,41 @@ public class WordFrequencies {
 	public int findIndexOfMax() {
 		int value = getMax();
 		int index = myFrequencies.indexOf(value);
-		System.out.printf("The word that occurs most often and its count are: %s\n", myWords.get(index));
+		System.out.printf("The word that occurs most often and its count are: %s with %d repetitions \n", myWords.get(index), value);
 		return index;
 	}
 
+	public void displayNonLetterInWord(FileResource file) {
+		for(String word : file.words()) {
+			if (word.contains("\"") || word.contains(" ")) System.out.printf("This word contains: '%s'\n", word);
+		}
+	}
+	
+	private boolean isOnlyQuotationMark(String s) {
+		return s.equals("\"");
+	}
+	public void findUniqueWordsIncludingPunctuation(FileResource file) {
+		 myWords.clear();
+		 myFrequencies.clear();
+		 String realWord = "";
+		 int indexItem = 0;
+		 int index = 0;
+		 for(String word: file.words()) {
+			 if(!isOnlyQuotationMark(word)) {
+
+			 }
+			 realWord = word.toLowerCase();
+			 index = myWords.indexOf(realWord);
+			 if( index != -1) {
+				 indexItem = myFrequencies.get(index) + 1;
+				 myFrequencies.set(index, indexItem);
+			 } else {
+				 myWords.add(realWord);
+				 myFrequencies.add(1);
+			 }
+		 }
+		 System.out.println(myWords);
+		 System.out.println(myFrequencies);
+		 System.out.println(myWords.size());
+	}
 }
