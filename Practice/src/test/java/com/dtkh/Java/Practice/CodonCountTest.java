@@ -1,5 +1,7 @@
 package com.dtkh.Java.Practice;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class CodonCountTest {
@@ -10,9 +12,15 @@ public class CodonCountTest {
 	}
 	
 	@Test
-	public void buildCondonMapTest() {
+	public void buildCodonMapTest() {
 		codonCount.buildCondonMap(1, "CGTTCAAGTTCAA");
 		System.out.println(codonCount.getCodonsMap());
 	}
-
+	
+	@Test
+	public void getMostCommonCodonTest() {
+		codonCount.buildCondonMap(1, "CGTTCAAGTTCAA");
+		String resultString = codonCount.getMostCommonCodon();
+		assert ("GTT".equals(resultString)) || ("CAA".equals(resultString));
+	}
 }
