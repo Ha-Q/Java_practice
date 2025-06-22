@@ -2,6 +2,8 @@ package com.dtkh.Java.Practice;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.duke.FileResource;
+
 public class CodonCount {
 	private HashMap<String, Integer> codonsMap;
 	public CodonCount() {
@@ -36,5 +38,21 @@ public class CodonCount {
 			}
 		}
 		return codon;
+	}
+	
+	public void printCodonCounts(int start, int end) {
+		codonsMap.forEach((k, v) -> {
+			if( v >= start && v <= end) System.out.printf("%s has repetion of %d\n", k, v);
+		});
+	}
+	
+	public void mapCodonsFromFile(FileResource file, int start) {
+		String content = file.asString();
+		buildCondonMap(start, content);
+	}
+	
+	private void addWordsFromFile(FileResource file) {
+		codonsMap.clear();
+		
 	}
 }
